@@ -142,6 +142,7 @@ class APNsClient(object):
             headers['apns-collapse-id'] = collapse_id
 
         url = '/3/device/{}'.format(token_hex)
+        logger.info('Sending APNS: payload=%s headers=%s', json_payload, headers)
         stream_id = self._connection.request('POST', url, json_payload, headers)  # type: int
         return stream_id
 
